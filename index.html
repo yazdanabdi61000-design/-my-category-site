@@ -7,349 +7,347 @@
 
 <style>
 *{
-box-sizing:border-box;
--webkit-tap-highlight-color:transparent
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent
 }
 
 html,body{
-margin:0;
-min-height:100%;
-font-family:Tahoma,Arial,sans-serif;
-background:#f7f7f7;
-color:#111
+  margin:0;
+  min-height:100%;
+  font-family:Tahoma,Arial,sans-serif;
+  background:#f7f7f7;
+  color:#111
 }
 
 button,input{
-font-family:inherit
+  font-family:inherit
 }
 
 #app{
-display:block;
-min-height:100vh;
-padding-bottom:115px
+  display:block;
+  min-height:100vh;
+  padding-bottom:115px
 }
 
 .top{
-height:58px;
-background:#fff;
-border-bottom:3px solid #111;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:0 14px;
-position:sticky;
-top:0;
-z-index:20
+  height:58px;
+  background:#fff;
+  border-bottom:3px solid #111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 14px;
+  position:sticky;
+  top:0;
+  z-index:20
 }
 
 .title{
-font-size:19px;
-font-weight:900
+  font-size:19px;
+  font-weight:900
 }
 
 .board{
-width:100%;
-border-top:0
+  width:100%;
+  border-top:0
 }
 
 .category{
-position:relative;
-background:#fff;
-border-bottom:4px solid #111;
-min-height:150px;
-padding:14px 12px 16px
+  position:relative;
+  background:#fff;
+  border-bottom:4px solid #111;
+  min-height:150px;
+  padding:14px 12px 16px
 }
 
 .category-head{
-display:flex;
-align-items:center;
-gap:9px;
-margin-bottom:11px
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin-bottom:11px
 }
 
 .cat-name{
-font-size:18px;
-font-weight:900;
-flex:1
+  font-size:18px;
+  font-weight:900;
+  flex:1
 }
 
 .cat-count{
-font-size:11px;
-color:#666
+  font-size:11px;
+  color:#666
 }
 
 .cat-tools{
-display:flex;
-gap:5px
+  display:flex;
+  gap:5px
 }
 
 .iconbtn{
-width:35px;
-height:35px;
-border:2px solid #111;
-background:#fff;
-border-radius:8px;
-font-size:17px
+  width:35px;
+  height:35px;
+  border:2px solid #111;
+  background:#fff;
+  border-radius:8px;
+  font-size:17px
 }
 
 .items{
-display:flex;
-gap:9px;
-overflow-x:auto;
-padding:3px 1px 7px;
-min-height:75px;
-scrollbar-width:none
+  display:flex;
+  gap:9px;
+  overflow-x:auto;
+  padding:3px 1px 7px;
+  min-height:75px;
+  scrollbar-width:none
 }
 
 .items::-webkit-scrollbar{
-display:none
+  display:none
 }
 
 .item{
-flex:0 0 108px;
-min-height:72px;
-border:3px solid #111;
-border-radius:9px;
-background:#fff;
-position:relative;
-overflow:hidden;
-touch-action:none
+  flex:0 0 108px;
+  min-height:72px;
+  border:3px solid #111;
+  border-radius:9px;
+  background:#fff;
+  position:relative;
+  overflow:hidden;
+  touch-action:none
 }
 
 .item.text-item{
-display:flex;
-align-items:center;
-justify-content:center;
-padding:9px;
-font-weight:bold;
-text-align:center;
-word-break:break-word
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:9px;
+  font-weight:bold;
+  text-align:center;
+  word-break:break-word
 }
 
 .item img{
-width:100%;
-height:100%;
-min-height:72px;
-object-fit:cover;
-display:block
+  width:100%;
+  height:100%;
+  min-height:72px;
+  object-fit:cover;
+  display:block
 }
 
 .item .item-name{
-position:absolute;
-bottom:0;
-left:0;
-right:0;
-background:#000b;
-color:#fff;
-font-size:11px;
-padding:5px;
-text-align:center
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#000b;
+  color:#fff;
+  font-size:11px;
+  padding:5px;
+  text-align:center
 }
 
 .item .move{
-position:absolute;
-top:3px;
-left:3px;
-border:1px solid #fff;
-background:#111d;
-color:#fff;
-border-radius:5px;
-font-size:12px;
-width:25px;
-height:25px
+  position:absolute;
+  top:3px;
+  left:3px;
+  border:1px solid #fff;
+  background:#111d;
+  color:#fff;
+  border-radius:5px;
+  font-size:12px;
+  width:25px;
+  height:25px
 }
 
 .emptycat{
-border:2px dashed #aaa;
-border-radius:8px;
-color:#888;
-display:flex;
-align-items:center;
-justify-content:center;
-height:72px;
-padding:10px;
-font-size:12px;
-flex:1
+  border:2px dashed #aaa;
+  border-radius:8px;
+  color:#888;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:72px;
+  padding:10px;
+  font-size:12px;
+  flex:1
 }
 
 .drop-hint{
-outline:5px dashed #555;
-outline-offset:-7px;
-background:#f0f0f0
+  outline:5px dashed #555;
+  outline-offset:-7px;
+  background:#f0f0f0
 }
 
 .bottom{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:#fff;
-border-top:4px solid #111;
-padding:10px 14px calc(10px + env(safe-area-inset-bottom));
-z-index:30
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#fff;
+  border-top:4px solid #111;
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  z-index:30
 }
 
 .addbox{
-height:64px;
-border:4px solid #111;
-border-radius:12px;
-background:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-gap:12px;
-font-weight:900;
-font-size:16px
+  height:64px;
+  border:4px solid #111;
+  border-radius:12px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  font-weight:900;
+  font-size:16px
 }
 
 .plus{
-font-size:31px;
-line-height:1
+  font-size:31px;
+  line-height:1
 }
 
 .addmenu{
-display:none;
-position:absolute;
-bottom:87px;
-left:14px;
-right:14px;
-background:#fff;
-border:3px solid #111;
-border-radius:13px;
-padding:8px;
-box-shadow:0 8px 30px #0003
+  display:none;
+  position:absolute;
+  bottom:87px;
+  left:14px;
+  right:14px;
+  background:#fff;
+  border:3px solid #111;
+  border-radius:13px;
+  padding:8px;
+  box-shadow:0 8px 30px #0003
 }
 
 .addmenu button{
-width:100%;
-padding:13px;
-margin:3px 0;
-background:#fff;
-border:2px solid #111;
-border-radius:9px;
-font-size:15px;
-font-weight:bold
+  width:100%;
+  padding:13px;
+  margin:3px 0;
+  background:#fff;
+  border:2px solid #111;
+  border-radius:9px;
+  font-size:15px;
+  font-weight:bold
 }
 
 .modalbg{
-position:fixed;
-inset:0;
-background:#0008;
-z-index:100;
-display:none;
-align-items:flex-end
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:100;
+  display:none;
+  align-items:flex-end
 }
 
 .modal{
-background:#fff;
-width:100%;
-max-height:90vh;
-overflow:auto;
-border-radius:20px 20px 0 0;
-border:3px solid #111;
-padding:18px
+  background:#fff;
+  width:100%;
+  max-height:90vh;
+  overflow:auto;
+  border-radius:20px 20px 0 0;
+  border:3px solid #111;
+  padding:18px
 }
 
 .modal h2{
-margin:0 0 14px
+  margin:0 0 14px
 }
 
 .modal input,
 .modal textarea,
 .modal select{
-width:100%;
-padding:13px;
-border:2px solid #111;
-border-radius:9px;
-font-size:14px;
-margin:6px 0 12px;
-background:#fff
+  width:100%;
+  padding:13px;
+  border:2px solid #111;
+  border-radius:9px;
+  font-size:14px;
+  margin:6px 0 12px;
+  background:#fff
 }
 
 .modal textarea{
-min-height:100px;
-resize:vertical
+  min-height:100px;
+  resize:vertical
 }
 
 .modal button{
-padding:12px 16px;
-border:2px solid #111;
-border-radius:9px;
-background:#111;
-color:#fff;
-font-size:14px;
-font-weight:bold
+  padding:12px 16px;
+  border:2px solid #111;
+  border-radius:9px;
+  background:#111;
+  color:#fff;
+  font-size:14px;
+  font-weight:bold
 }
 
 .row{
-display:flex;
-gap:8px
+  display:flex;
+  gap:8px
 }
 
 .row>*{
-flex:1
+  flex:1
 }
 
 .preview{
-width:100%;
-height:160px;
-border:2px dashed #999;
-border-radius:10px;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden;
-margin:5px 0 12px;
-color:#888
+  width:100%;
+  height:160px;
+  border:2px dashed #999;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  margin:5px 0 12px;
+  color:#888
 }
 
 .preview img{
-width:100%;
-height:100%;
-object-fit:contain
+  width:100%;
+  height:100%;
+  object-fit:contain
 }
 
 #toast{
-position:fixed;
-left:50%;
-bottom:94px;
-transform:translateX(-50%);
-background:#111;
-color:#fff;
-padding:10px 15px;
-border-radius:10px;
-font-size:12px;
-z-index:200;
-opacity:0;
-pointer-events:none;
-transition:.25s
+  position:fixed;
+  left:50%;
+  bottom:94px;
+  transform:translateX(-50%);
+  background:#111;
+  color:#fff;
+  padding:10px 15px;
+  border-radius:10px;
+  font-size:12px;
+  z-index:200;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s
 }
 
 #toast.show{
-opacity:1
+  opacity:1
 }
 
 @media(min-width:700px){
+  .board{
+    max-width:850px;
+    margin:auto
+  }
 
-.board{
-max-width:850px;
-margin:auto
-}
+  .top{
+    padding-left:max(14px,calc((100% - 850px)/2));
+    padding-right:max(14px,calc((100% - 850px)/2))
+  }
 
-.top{
-padding-left:max(14px,calc((100% - 850px)/2));
-padding-right:max(14px,calc((100% - 850px)/2))
-}
+  .bottom{
+    max-width:850px;
+    margin:auto
+  }
 
-.bottom{
-max-width:850px;
-margin:auto
-}
-
-.category{
-min-height:170px
-}
-
+  .category{
+    min-height:170px
+  }
 }
 </style>
 </head>
@@ -358,41 +356,31 @@ min-height:170px
 
 <div id="app">
 
-<div class="top">
-<div class="title">دسته‌بندی من</div>
-</div>
+  <div class="top">
+    <div class="title">دسته‌بندی من</div>
+  </div>
 
-<div class="board" id="board"></div>
+  <div class="board" id="board"></div>
 
-<div class="bottom">
+  <div class="bottom">
 
-<div class="addmenu" id="addMenu">
+    <div class="addmenu" id="addMenu">
+      <button onclick="newText()">✏️ نوشته</button>
+      <button onclick="newImage()">🖼️ عکس</button>
+      <button onclick="newCategory()">📁 دسته‌بندی جدید</button>
+    </div>
 
-<button onclick="newText()">
-✏️ نوشته
-</button>
+    <button class="addbox" onclick="toggleAddMenu()">
+      <span class="plus">＋</span>
+      نوشته یا عکس
+    </button>
 
-<button onclick="newImage()">
-🖼️ عکس
-</button>
-
-<button onclick="newCategory()">
-📁 دسته‌بندی جدید
-</button>
-
-</div>
-
-<button class="addbox" onclick="toggleAddMenu()">
-<span class="plus">＋</span>
-نوشته یا عکس
-</button>
-
-</div>
+  </div>
 
 </div>
 
 <div id="modalbg" class="modalbg">
-<div class="modal" id="modal"></div>
+  <div class="modal" id="modal"></div>
 </div>
 
 <div id="toast"></div>
@@ -401,907 +389,749 @@ min-height:170px
 
 const KEY="category_board_v2";
 
-let db=JSON.parse(
-localStorage.getItem(KEY)||"null"
-)||{
-
-title:"دسته‌بندی من",
-
-categories:[
-
-{
-id:"c1",
-name:"دسته‌بندی اول",
-items:[]
-},
-
-{
-id:"c2",
-name:"دسته‌بندی دوم",
-items:[]
-},
-
-{
-id:"c3",
-name:"دسته‌بندی سوم",
-items:[]
-}
-
-]
-
+let db=JSON.parse(localStorage.getItem(KEY)||"null")||{
+  title:"دسته‌بندی من",
+  categories:[
+    {
+      id:"c1",
+      name:"دسته‌بندی اول",
+      items:[]
+    },
+    {
+      id:"c2",
+      name:"دسته‌بندی دوم",
+      items:[]
+    },
+    {
+      id:"c3",
+      name:"دسته‌بندی سوم",
+      items:[]
+    }
+  ]
 };
 
-/* اسم سایت همیشه ثابت است */
 db.title="دسته‌بندی من";
 
 let imageData="";
 
-
 function save(){
-
-db.title="دسته‌بندی من";
-
-localStorage.setItem(
-KEY,
-JSON.stringify(db)
-);
-
+  db.title="دسته‌بندی من";
+  localStorage.setItem(KEY,JSON.stringify(db));
 }
-
 
 function esc(s){
-
-return String(s).replace(
-/[&<>"']/g,
-m=>({
-
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
-
-}[m])
-);
-
+  return String(s).replace(
+    /[&<>"']/g,
+    m=>({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[m])
+  );
 }
-
 
 function render(){
 
-document.querySelector(".title").textContent=
-"دسته‌بندی من";
+  document.querySelector(".title").textContent="دسته‌بندی من";
 
-const board=
-document.getElementById("board");
+  const board=document.getElementById("board");
 
-board.innerHTML="";
+  board.innerHTML="";
 
+  db.categories.forEach(cat=>{
 
-db.categories.forEach(cat=>{
+    const sec=document.createElement("section");
 
-const sec=
-document.createElement("section");
+    sec.className="category";
 
-sec.className="category";
+    sec.dataset.cat=cat.id;
 
-sec.dataset.cat=cat.id;
+    sec.innerHTML=`
 
+      <div class="category-head">
 
-sec.innerHTML=`
+        <div class="cat-name">
+          ${esc(cat.name)}
+        </div>
 
-<div class="category-head">
+        <div class="cat-count">
+          ${cat.items.length} مورد
+        </div>
 
-<div class="cat-name">
-${esc(cat.name)}
-</div>
+        <div class="cat-tools">
 
-<div class="cat-count">
-${cat.items.length} مورد
-</div>
+          <button
+            class="iconbtn"
+            onclick="renameCategory('${cat.id}')">
+            ✏️
+          </button>
 
-<div class="cat-tools">
+          <button
+            class="iconbtn"
+            onclick="deleteCategory('${cat.id}')">
+            🗑️
+          </button>
 
-<button
-class="iconbtn"
-onclick="renameCategory('${cat.id}')">
-✏️
-</button>
+        </div>
 
-<button
-class="iconbtn"
-onclick="deleteCategory('${cat.id}')">
-🗑️
-</button>
+      </div>
 
-</div>
+      <div class="items"></div>
+    `;
 
-</div>
+    const itemsEl=sec.querySelector(".items");
 
-<div class="items"></div>
+    if(!cat.items.length){
 
-`;
+      itemsEl.innerHTML=
+        '<div class="emptycat">نوشته یا عکس را اینجا قرار بده</div>';
 
+    }else{
 
-const itemsEl=
-sec.querySelector(".items");
+      cat.items.forEach(item=>{
 
+        const el=document.createElement("div");
 
-if(!cat.items.length){
+        el.className=
+          "item "+
+          (item.type==="text"?"text-item":"");
 
-itemsEl.innerHTML=
-'<div class="emptycat">نوشته یا عکس را اینجا قرار بده</div>';
+        el.dataset.item=item.id;
 
-}else{
+        if(item.type==="text"){
 
-cat.items.forEach(item=>{
+          el.innerHTML=
+            `<span>${esc(item.text)}</span>`;
 
-const el=
-document.createElement("div");
+        }else{
 
-el.className=
-"item "+
-(item.type==="text"?"text-item":"");
+          el.innerHTML=`
+            <img src="${item.image}" alt="">
+            <div class="item-name">
+              ${esc(item.name||"عکس")}
+            </div>
+          `;
 
-el.dataset.item=item.id;
+        }
 
+        el.innerHTML+=`
+          <button
+            class="move"
+            onclick="
+              moveItem('${cat.id}','${item.id}');
+              event.stopPropagation()
+            ">
+            ↔
+          </button>
+        `;
 
-if(item.type==="text"){
+        addTouchDrag(el,cat.id,item.id);
 
-el.innerHTML=
-`<span>${esc(item.text)}</span>`;
+        itemsEl.appendChild(el);
 
-}else{
+      });
 
-el.innerHTML=
-`
-<img src="${item.image}" alt="">
-<div class="item-name">
-${esc(item.name||"عکس")}
-</div>
-`;
+    }
 
-}
+    addDrop(sec,cat.id);
 
+    board.appendChild(sec);
 
-el.innerHTML+=`
-
-<button
-class="move"
-onclick="moveItem('${cat.id}','${item.id}');event.stopPropagation()">
-↔
-</button>
-
-`;
-
-
-addTouchDrag(
-el,
-cat.id,
-item.id
-);
-
-itemsEl.appendChild(el);
-
-});
+  });
 
 }
-
-
-addDrop(
-sec,
-cat.id
-);
-
-board.appendChild(sec);
-
-});
-
-}
-
 
 function addDrop(sec,catId){
 
-sec.addEventListener(
-"dragover",
-e=>{
+  sec.addEventListener("dragover",e=>{
 
-e.preventDefault();
+    e.preventDefault();
 
-sec.classList.add("drop-hint");
+    sec.classList.add("drop-hint");
 
-}
-);
+  });
 
+  sec.addEventListener("dragleave",()=>{
 
-sec.addEventListener(
-"dragleave",
-()=>{
+    sec.classList.remove("drop-hint");
 
-sec.classList.remove("drop-hint");
+  });
 
-}
-);
+  sec.addEventListener("drop",e=>{
 
+    e.preventDefault();
 
-sec.addEventListener(
-"drop",
-e=>{
+    sec.classList.remove("drop-hint");
 
-e.preventDefault();
+    if(window.dragItem){
 
-sec.classList.remove("drop-hint");
+      moveTo(
+        window.dragItem.cat,
+        window.dragItem.item,
+        catId
+      );
 
-if(window.dragItem){
+    }
 
-moveTo(
-window.dragItem.cat,
-window.dragItem.item,
-catId
-);
+  });
 
 }
 
-}
-);
+function addTouchDrag(el,catId,itemId){
+
+  el.draggable=true;
+
+  el.addEventListener("dragstart",()=>{
+
+    window.dragItem={
+      cat:catId,
+      item:itemId
+    };
+
+  });
+
+  el.addEventListener("dragend",()=>{
+
+    window.dragItem=null;
+
+  });
+
+  let timer=null;
+
+  el.addEventListener(
+    "touchstart",
+    ()=>{
+
+      timer=setTimeout(()=>{
+
+        window.dragItem={
+          cat:catId,
+          item:itemId
+        };
+
+        el.style.opacity=".5";
+
+        toast(
+          "حالا بکش و روی یک دسته‌بندی رها کن"
+        );
+
+      },450);
+
+    },
+    {passive:true}
+  );
+
+  el.addEventListener("touchend",()=>{
+
+    clearTimeout(timer);
+
+    el.style.opacity="";
+
+  });
+
+  el.addEventListener(
+    "touchmove",
+    e=>{
+
+      if(!window.dragItem)return;
+
+      const t=e.touches[0];
+
+      const target=
+        document
+        .elementFromPoint(
+          t.clientX,
+          t.clientY
+        )
+        ?.closest(".category");
+
+      document
+        .querySelectorAll(".category")
+        .forEach(x=>
+          x.classList.remove("drop-hint")
+        );
+
+      if(target)
+        target.classList.add("drop-hint");
+
+    },
+    {passive:true}
+  );
+
+  el.addEventListener("touchcancel",()=>{
+
+    clearTimeout(timer);
+
+  });
 
 }
-
-
-function addTouchDrag(
-el,
-catId,
-itemId
-){
-
-el.draggable=true;
-
-
-el.addEventListener(
-"dragstart",
-()=>{
-
-window.dragItem={
-cat:catId,
-item:itemId
-};
-
-}
-);
-
-
-el.addEventListener(
-"dragend",
-()=>{
-
-window.dragItem=null;
-
-}
-);
-
-
-let timer=null;
-
-
-el.addEventListener(
-"touchstart",
-()=>{
-
-timer=setTimeout(
-()=>{
-
-window.dragItem={
-cat:catId,
-item:itemId
-};
-
-el.style.opacity=".5";
-
-toast(
-"حالا بکش و روی یک دسته‌بندی رها کن"
-);
-
-},
-450
-);
-
-},
-{passive:true}
-);
-
-
-el.addEventListener(
-"touchend",
-()=>{
-
-clearTimeout(timer);
-
-el.style.opacity="";
-
-}
-);
-
-
-el.addEventListener(
-"touchmove",
-e=>{
-
-if(!window.dragItem)
-return;
-
-const t=e.touches[0];
-
-const target=
-document.elementFromPoint(
-t.clientX,
-t.clientY
-)?.closest(".category");
-
-
-document
-.querySelectorAll(".category")
-.forEach(x=>
-x.classList.remove("drop-hint")
-);
-
-
-if(target)
-target.classList.add("drop-hint");
-
-},
-{passive:true}
-);
-
-
-el.addEventListener(
-"touchcancel",
-()=>{
-
-clearTimeout(timer);
-
-}
-);
-
-}
-
 
 document.addEventListener(
-"touchend",
-e=>{
+  "touchend",
+  e=>{
 
-if(!window.dragItem)
-return;
+    if(!window.dragItem)return;
 
-const touch=e.changedTouches[0];
+    const touch=e.changedTouches[0];
 
-if(!touch)
-return;
+    if(!touch)return;
 
-const els=
-document.elementsFromPoint(
-touch.clientX,
-touch.clientY
+    const els=
+      document.elementsFromPoint(
+        touch.clientX,
+        touch.clientY
+      );
+
+    const target=
+      els.find(
+        x=>x.classList?.contains("category")
+      );
+
+    if(target){
+
+      moveTo(
+        window.dragItem.cat,
+        window.dragItem.item,
+        target.dataset.cat
+      );
+
+    }
+
+    document
+      .querySelectorAll(".category")
+      .forEach(x=>
+        x.classList.remove("drop-hint")
+      );
+
+    window.dragItem=null;
+
+  }
 );
 
+function moveTo(from,itemId,to){
 
-const target=
-els.find(
-x=>x.classList?.contains("category")
-);
+  if(from===to)return;
 
+  const a=
+    db.categories.find(
+      c=>c.id===from
+    );
 
-if(target){
+  const b=
+    db.categories.find(
+      c=>c.id===to
+    );
 
-moveTo(
-window.dragItem.cat,
-window.dragItem.item,
-target.dataset.cat
-);
+  if(!a||!b)return;
+
+  const i=
+    a.items.findIndex(
+      x=>x.id===itemId
+    );
+
+  if(i<0)return;
+
+  b.items.push(
+    a.items.splice(i,1)[0]
+  );
+
+  save();
+
+  render();
+
+  toast("انتقال انجام شد");
 
 }
 
+function moveItem(from,id){
 
-document
-.querySelectorAll(".category")
-.forEach(x=>
-x.classList.remove("drop-hint")
-);
+  const choices=
+    db.categories.filter(
+      c=>c.id!==from
+    );
 
+  if(!choices.length){
 
-window.dragItem=null;
+    return toast(
+      "دسته‌بندی دیگری وجود ندارد"
+    );
 
-}
-);
+  }
 
+  show(`
+    <h2>انتقال به دسته‌بندی</h2>
 
-function moveTo(
-from,
-itemId,
-to
-){
+    ${choices.map(c=>`
 
-if(from===to)
-return;
+      <button
+        style="width:100%;margin:5px 0"
+        onclick="
+          moveTo(
+            '${from}',
+            '${id}',
+            '${c.id}'
+          );
+          closeModal()
+        ">
+        ${esc(c.name)}
+      </button>
 
+    `).join("")}
 
-const a=
-db.categories.find(
-c=>c.id===from
-);
+    <br>
 
-const b=
-db.categories.find(
-c=>c.id===to
-);
-
-
-if(!a||!b)
-return;
-
-
-const i=
-a.items.findIndex(
-x=>x.id===itemId
-);
-
-
-if(i<0)
-return;
-
-
-b.items.push(
-a.items.splice(i,1)[0]
-);
-
-
-save();
-
-render();
-
-toast("انتقال انجام شد");
+    <button onclick="closeModal()">
+      بستن
+    </button>
+  `);
 
 }
-
-
-function moveItem(
-from,
-id
-){
-
-const choices=
-db.categories.filter(
-c=>c.id!==from
-);
-
-
-if(!choices.length)
-return toast(
-"دسته‌بندی دیگری وجود ندارد"
-);
-
-
-show(`
-
-<h2>
-انتقال به دسته‌بندی
-</h2>
-
-${choices.map(c=>`
-
-<button
-style="width:100%;margin:5px 0"
-onclick="moveTo('${from}','${id}','${c.id}');closeModal()">
-
-${esc(c.name)}
-
-</button>
-
-`).join("")}
-
-<br>
-
-<button onclick="closeModal()">
-بستن
-</button>
-
-`);
-
-}
-
 
 function toggleAddMenu(){
 
-const m=
-document.getElementById("addMenu");
+  const m=
+    document.getElementById("addMenu");
 
-
-m.style.display=
-m.style.display==="block"
-?"none"
-:"block";
+  m.style.display=
+    m.style.display==="block"
+      ?"none"
+      :"block";
 
 }
-
 
 function newText(){
 
-toggleAddMenu();
+  toggleAddMenu();
 
-imageData="";
+  imageData="";
 
+  show(`
+    <h2>افزودن نوشته</h2>
 
-show(`
+    <label>متن</label>
 
-<h2>
-افزودن نوشته
-</h2>
+    <textarea
+      id="txt"
+      placeholder="مثلاً روغن — ۲۰۰ هزار تومان">
+    </textarea>
 
-<label>
-متن
-</label>
+    <div class="row">
 
-<textarea
-id="txt"
-placeholder="مثلاً روغن — ۲۰۰ هزار تومان">
-</textarea>
+      <button onclick="closeModal()">
+        لغو
+      </button>
 
-<div class="row">
+      <button onclick="saveText()">
+        افزودن
+      </button>
 
-<button onclick="closeModal()">
-لغو
-</button>
-
-<button onclick="saveText()">
-افزودن
-</button>
-
-</div>
-
-`);
+    </div>
+  `);
 
 }
-
 
 function saveText(){
 
-const text=
-document.getElementById("txt")
-.value.trim();
+  const text=
+    document
+    .getElementById("txt")
+    .value
+    .trim();
 
+  if(!text)
+    return toast("متن را بنویس");
 
-if(!text)
-return toast("متن را بنویس");
+  db.categories[0].items.push({
 
+    id:"i"+Date.now(),
 
-db.categories[0].items.push({
+    type:"text",
 
-id:"i"+Date.now(),
+    text
 
-type:"text",
+  });
 
-text
+  save();
 
-});
+  closeModal();
 
+  render();
 
-save();
-
-closeModal();
-
-render();
-
-toast("نوشته اضافه شد");
+  toast("نوشته اضافه شد");
 
 }
-
 
 function newImage(){
 
-toggleAddMenu();
+  toggleAddMenu();
 
-imageData="";
+  imageData="";
 
+  show(`
+    <h2>افزودن عکس</h2>
 
-show(`
+    <label>
+      انتخاب عکس از گوشی
+    </label>
 
-<h2>
-افزودن عکس
-</h2>
+    <input
+      id="pic"
+      type="file"
+      accept="image/*">
 
-<label>
-انتخاب عکس از گوشی
-</label>
+    <div
+      class="preview"
+      id="prev">
+      🖼️
+    </div>
 
-<input
-id="pic"
-type="file"
-accept="image/*">
+    <label>
+      نام عکس (اختیاری)
+    </label>
 
-<div
-class="preview"
-id="prev">
+    <input
+      id="picname"
+      placeholder="مثلاً روغن">
 
-🖼️
+    <div class="row">
 
-</div>
+      <button onclick="closeModal()">
+        لغو
+      </button>
 
-<label>
-نام عکس (اختیاری)
-</label>
+      <button onclick="saveImage()">
+        افزودن
+      </button>
 
-<input
-id="picname"
-placeholder="مثلاً روغن">
+    </div>
+  `);
 
-<div class="row">
+  document
+    .getElementById("pic")
+    .onchange=e=>{
 
-<button onclick="closeModal()">
-لغو
-</button>
+      const f=e.target.files[0];
 
-<button onclick="saveImage()">
-افزودن
-</button>
+      if(!f)return;
 
-</div>
+      if(f.size>5*1024*1024){
 
-`);
+        return toast(
+          "عکس کمتر از ۵ مگابایت انتخاب کن"
+        );
 
+      }
 
-document.getElementById(
-"pic"
-).onchange=e=>{
+      const r=new FileReader();
 
-const f=e.target.files[0];
+      r.onload=()=>{
 
-if(!f)
-return;
+        imageData=r.result;
 
+        document
+          .getElementById("prev")
+          .innerHTML=
+            `<img src="${imageData}">`;
 
-if(f.size>5*1024*1024)
-return toast(
-"عکس کمتر از ۵ مگابایت انتخاب کن"
-);
+      };
 
+      r.readAsDataURL(f);
 
-const r=
-new FileReader();
-
-
-r.onload=()=>{
-
-imageData=r.result;
-
-
-document.getElementById(
-"prev"
-).innerHTML=
-`<img src="${imageData}">`;
-
-};
-
-
-r.readAsDataURL(f);
-
-};
+    };
 
 }
-
 
 function saveImage(){
 
-if(!imageData)
-return toast(
-"اول عکس را انتخاب کن"
-);
+  if(!imageData)
+    return toast(
+      "اول عکس را انتخاب کن"
+    );
 
+  const name=
+    document
+    .getElementById("picname")
+    .value
+    .trim();
 
-const name=
-document.getElementById(
-"picname"
-).value.trim();
+  db.categories[0].items.push({
 
+    id:"i"+Date.now(),
 
-db.categories[0].items.push({
+    type:"image",
 
-id:"i"+Date.now(),
+    image:imageData,
 
-type:"image",
+    name
 
-image:imageData,
+  });
 
-name
+  save();
 
-});
+  closeModal();
 
+  render();
 
-save();
-
-closeModal();
-
-render();
-
-toast("عکس اضافه شد");
+  toast("عکس اضافه شد");
 
 }
-
 
 function newCategory(){
 
-toggleAddMenu();
+  toggleAddMenu();
 
+  show(`
+    <h2>دسته‌بندی جدید</h2>
 
-show(`
+    <input
+      id="catname"
+      placeholder="مثلاً خرید خانه">
 
-<h2>
-دسته‌بندی جدید
-</h2>
+    <div class="row">
 
-<input
-id="catname"
-placeholder="مثلاً خرید خانه">
+      <button onclick="closeModal()">
+        لغو
+      </button>
 
-<div class="row">
+      <button onclick="saveCategory()">
+        ساختن
+      </button>
 
-<button onclick="closeModal()">
-لغو
-</button>
-
-<button onclick="saveCategory()">
-ساختن
-</button>
-
-</div>
-
-`);
+    </div>
+  `);
 
 }
-
 
 function saveCategory(){
 
-const n=
-document.getElementById(
-"catname"
-).value.trim();
+  const n=
+    document
+    .getElementById("catname")
+    .value
+    .trim();
 
+  if(!n)
+    return toast(
+      "اسم دسته‌بندی را بنویس"
+    );
 
-if(!n)
-return toast(
-"اسم دسته‌بندی را بنویس"
-);
+  db.categories.push({
 
+    id:"c"+Date.now(),
 
-db.categories.push({
+    name:n,
 
-id:"c"+Date.now(),
+    items:[]
 
-name:n,
+  });
 
-items:[]
+  save();
 
-});
+  closeModal();
 
-
-save();
-
-closeModal();
-
-render();
+  render();
 
 }
-
 
 function renameCategory(id){
 
-const c=
-db.categories.find(
-x=>x.id===id
-);
+  const c=
+    db.categories.find(
+      x=>x.id===id
+    );
 
+  const n=
+    prompt(
+      "نام دسته‌بندی:",
+      c.name
+    );
 
-const n=
-prompt(
-"نام دسته‌بندی:",
-c.name
-);
+  if(n&&n.trim()){
 
+    c.name=n.trim();
 
-if(n&&n.trim()){
+    save();
 
-c.name=n.trim();
+    render();
 
-save();
-
-render();
-
-}
+  }
 
 }
-
 
 function deleteCategory(id){
 
-if(db.categories.length<=1)
-return toast(
-"حداقل یک دسته‌بندی باید بماند"
-);
+  if(db.categories.length<=1){
 
+    return toast(
+      "حداقل یک دسته‌بندی باید بماند"
+    );
 
-const c=
-db.categories.find(
-x=>x.id===id
-);
+  }
 
+  const c=
+    db.categories.find(
+      x=>x.id===id
+    );
 
-if(
-c.items.length &&
-!confirm(
-"این دسته‌بندی مورد دارد. حذف شود؟"
-)
-)
-return;
+  if(
+    c.items.length &&
+    !confirm(
+      "این دسته‌بندی مورد دارد. حذف شود؟"
+    )
+  )return;
 
+  db.categories=
+    db.categories.filter(
+      x=>x.id!==id
+    );
 
-db.categories=
-db.categories.filter(
-x=>x.id!==id
-);
+  save();
 
-
-save();
-
-render();
+  render();
 
 }
-
 
 function show(html){
 
-document.getElementById(
-"modal"
-).innerHTML=html;
+  document
+    .getElementById("modal")
+    .innerHTML=html;
 
-
-document.getElementById(
-"modalbg"
-).style.display="flex";
+  document
+    .getElementById("modalbg")
+    .style.display="flex";
 
 }
-
 
 function closeModal(){
 
-document.getElementById(
-"modalbg"
-).style.display="none";
+  document
+    .getElementById("modalbg")
+    .style.display="none";
 
 }
-
 
 function toast(s){
 
-const t=
-document.getElementById("toast");
+  const t=
+    document.getElementById("toast");
 
+  t.textContent=s;
 
-t.textContent=s;
+  t.classList.add("show");
 
-t.classList.add("show");
+  clearTimeout(window.tt);
 
-
-clearTimeout(window.tt);
-
-
-window.tt=setTimeout(
-()=>t.classList.remove("show"),
-1800
-);
+  window.tt=
+    setTimeout(
+      ()=>t.classList.remove("show"),
+      1800
+    );
 
 }
 
-
-/* اجرای مستقیم سایت بدون صفحه آماده‌سازی */
 render();
 
 </script>
