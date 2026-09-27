@@ -23,34 +23,8 @@ button,input{
 font-family:inherit
 }
 
-#loading{
-position:fixed;
-inset:0;
-background:white;
-z-index:9999;
-display:flex;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-gap:14px;
-transition:.35s
-}
-
-.loader{
-width:48px;
-height:48px;
-border:5px solid #ddd;
-border-top-color:#111;
-border-radius:50%;
-animation:spin .8s linear infinite
-}
-
-@keyframes spin{
-to{transform:rotate(360deg)}
-}
-
 #app{
-display:none;
+display:block;
 min-height:100vh;
 padding-bottom:115px
 }
@@ -381,11 +355,6 @@ min-height:170px
 </head>
 
 <body>
-
-<div id="loading">
-<div class="loader"></div>
-<b>در حال آماده‌سازی سایت...</b>
-</div>
 
 <div id="app">
 
@@ -798,15 +767,20 @@ clearTimeout(timer);
 
 document.addEventListener(
 "touchend",
-()=>{
+e=>{
 
 if(!window.dragItem)
 return;
 
+const touch=e.changedTouches[0];
+
+if(!touch)
+return;
+
 const els=
 document.elementsFromPoint(
-window.event?.changedTouches?.[0]?.clientX||0,
-window.event?.changedTouches?.[0]?.clientY||0
+touch.clientX,
+touch.clientY
 );
 
 
@@ -1085,4 +1059,252 @@ return;
 
 
 if(f.size>5*1024*1024)
-return 
+return toast(
+"عکس کمتر از ۵ مگابایت انتخاب کن"
+);
+
+
+const r=
+new FileReader();
+
+
+r.onload=()=>{
+
+imageData=r.result;
+
+
+document.getElementById(
+"prev"
+).innerHTML=
+`<img src="${imageData}">`;
+
+};
+
+
+r.readAsDataURL(f);
+
+};
+
+}
+
+
+function saveImage(){
+
+if(!imageData)
+return toast(
+"اول عکس را انتخاب کن"
+);
+
+
+const name=
+document.getElementById(
+"picname"
+).value.trim();
+
+
+db.categories[0].items.push({
+
+id:"i"+Date.now(),
+
+type:"image",
+
+image:imageData,
+
+name
+
+});
+
+
+save();
+
+closeModal();
+
+render();
+
+toast("عکس اضافه شد");
+
+}
+
+
+function newCategory(){
+
+toggleAddMenu();
+
+
+show(`
+
+<h2>
+دسته‌بندی جدید
+</h2>
+
+<input
+id="catname"
+placeholder="مثلاً خرید خانه">
+
+<div class="row">
+
+<button onclick="closeModal()">
+لغو
+</button>
+
+<button onclick="saveCategory()">
+ساختن
+</button>
+
+</div>
+
+`);
+
+}
+
+
+function saveCategory(){
+
+const n=
+document.getElementById(
+"catname"
+).value.trim();
+
+
+if(!n)
+return toast(
+"اسم دسته‌بندی را بنویس"
+);
+
+
+db.categories.push({
+
+id:"c"+Date.now(),
+
+name:n,
+
+items:[]
+
+});
+
+
+save();
+
+closeModal();
+
+render();
+
+}
+
+
+function renameCategory(id){
+
+const c=
+db.categories.find(
+x=>x.id===id
+);
+
+
+const n=
+prompt(
+"نام دسته‌بندی:",
+c.name
+);
+
+
+if(n&&n.trim()){
+
+c.name=n.trim();
+
+save();
+
+render();
+
+}
+
+}
+
+
+function deleteCategory(id){
+
+if(db.categories.length<=1)
+return toast(
+"حداقل یک دسته‌بندی باید بماند"
+);
+
+
+const c=
+db.categories.find(
+x=>x.id===id
+);
+
+
+if(
+c.items.length &&
+!confirm(
+"این دسته‌بندی مورد دارد. حذف شود؟"
+)
+)
+return;
+
+
+db.categories=
+db.categories.filter(
+x=>x.id!==id
+);
+
+
+save();
+
+render();
+
+}
+
+
+function show(html){
+
+document.getElementById(
+"modal"
+).innerHTML=html;
+
+
+document.getElementById(
+"modalbg"
+).style.display="flex";
+
+}
+
+
+function closeModal(){
+
+document.getElementById(
+"modalbg"
+).style.display="none";
+
+}
+
+
+function toast(s){
+
+const t=
+document.getElementById("toast");
+
+
+t.textContent=s;
+
+t.classList.add("show");
+
+
+clearTimeout(window.tt);
+
+
+window.tt=setTimeout(
+()=>t.classList.remove("show"),
+1800
+);
+
+}
+
+
+/* اجرای مستقیم سایت بدون صفحه آماده‌سازی */
+render();
+
+</script>
+
+</body>
+</html>
